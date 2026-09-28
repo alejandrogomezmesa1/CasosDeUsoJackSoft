@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam shadowing true
+skinparam defaultFontName "Inter, Arial, sans-serif"
+
+skinparam actor {
+  BorderColor #0f172a
+  BackgroundColor #fff7ed
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #0f172a
+  ArrowColor #ea580c
+}
+
+skinparam usecase<<hub>> {
+  BackgroundColor #fff7ed
+  BorderColor #ea580c
+}
+
+actor "Administrador" as actor_user
+
+rectangle "SISTEMA JACKSOFT — SEGURIDAD Y ACCESO (ROLES)" {
+  usecase "Gestión de roles" as UC_Hub <<hub>>
+  usecase "Listar roles" as UC_Central <<hub>>
+  usecase "Crear rol" as UC_Top1
+  usecase "Ver detalle del rol" as UC_R1
+  usecase "Editar rol" as UC_R2
+  usecase "Asignar permisos" as UC_R3
+  usecase "Cambiar estado" as UC_R4
+  usecase "Eliminar rol" as UC_R5
+}
+
+actor_user --> UC_Hub
+UC_Hub .> UC_Central : <<include>>
+UC_Top1 ..> UC_Hub : <<extend>>
+UC_Top1 .> UC_Central : <<include>>
+UC_R1 ..> UC_Central : <<extend>>
+UC_R2 ..> UC_Central : <<extend>>
+UC_R3 ..> UC_Central : <<extend>>
+UC_R4 ..> UC_Central : <<extend>>
+UC_R5 ..> UC_Central : <<extend>>
+@enduml

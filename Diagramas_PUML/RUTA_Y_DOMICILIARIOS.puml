@@ -1,0 +1,44 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam shadowing true
+skinparam defaultFontName "Inter, Arial, sans-serif"
+
+skinparam actor {
+  BorderColor #0f172a
+  BackgroundColor #fff7ed
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #0f172a
+  ArrowColor #ea580c
+}
+
+skinparam usecase<<hub>> {
+  BackgroundColor #fff7ed
+  BorderColor #ea580c
+}
+
+actor "Domiciliario" as actor_user
+
+rectangle "SISTEMA JACKSOFT — LOGÍSTICA Y DOMICILIOS (RUTA Y DOMICILIARIOS)" {
+  usecase "Gestión de rutas y domiciliarios" as UC_Hub <<hub>>
+  usecase "Listar domiciliarios" as UC_Central <<hub>>
+  usecase "Crear asignacion de zonas" as UC_Top1
+  usecase "Buscar/Filtrar domiciliarios" as UC_Bot1
+  usecase "Ver detalle del domiciliario" as UC_R1
+  usecase "Ver estado" as UC_R2
+}
+
+actor_user --> UC_Hub
+UC_Hub .> UC_Central : <<include>>
+UC_Top1 ..> UC_Hub : <<extend>>
+UC_Top1 .> UC_Central : <<include>>
+UC_Bot1 ..> UC_Hub : <<extend>>
+UC_Bot1 .> UC_Central : <<include>>
+UC_R1 ..> UC_Central : <<extend>>
+UC_R2 ..> UC_Central : <<extend>>
+@enduml

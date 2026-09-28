@@ -1,0 +1,45 @@
+@startuml C4_Nivel3_Componentes
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Nivel 3: Componentes del Servidor Backend — JackSoft
+
+Container(apps, "Aplicaciones Web y Móvil", "Frontend", "Interfaces de usuario donde interactúan clientes, administradores y domiciliarios.")
+ContainerDb(bd, "Base de Datos", "Base de Datos Relacional", "33 tablas que guardan toda la información de la empresa.")
+
+Container_Boundary(backend, "Servidor Backend de JackSoft") {
+    Component(seguridad, "1. Seguridad y Usuarios", "Módulo", "Control de acceso, contraseñas, roles y permisos del personal.")
+    Component(suscripciones, "2. Clientes y Suscripciones", "Módulo", "Gestión de planes semanal/quincenal/mensual, menús y descuento automático de festivos.")
+    Component(pagos, "3. Pagos y Comprobantes", "Módulo", "Revisión de comprobantes Nequi/Bancolombia y activación de planes.")
+    Component(cocas, "4. Control de Cocas", "Módulo", "Cobro del depósito de garantía ($70.000 COP), balance de 2 kits y registro de novedades.")
+    Component(cocina, "5. Cocina y Producción", "Módulo", "Conteo diario de almuerzos a preparar, recetas e ingredientes.")
+    Component(logistica, "6. Logística y Rutas", "Módulo", "Organización de entregas por zonas de Medellín, paradas y domiciliarios.")
+    Component(compras, "7. Compras e Inventario", "Módulo", "Registro de proveedores, insumos y alertas de agotamiento.")
+    Component(reportes, "8. Reportes y Métricas", "Módulo", "Generación de estadísticas de ventas, clientes activos y rendimiento.")
+    Component(datos, "Capa de Acceso a Datos", "Conexión", "Encargada de leer y escribir de forma segura en las tablas de la base de datos.")
+}
+
+Rel(apps, seguridad, "Inicia sesión", "")
+Rel(apps, suscripciones, "Gestiona planes", "")
+Rel(apps, pagos, "Registra comprobante", "")
+Rel(apps, cocina, "Consulta pedidos de cocina", "")
+Rel(apps, logistica, "Consulta rutas", "")
+Rel(apps, compras, "Gestiona insumos", "")
+Rel(apps, reportes, "Consulta métricas", "")
+
+Rel(suscripciones, cocas, "Asigna depósito de garantía", "")
+Rel(suscripciones, pagos, "Espera validación de pago", "")
+
+Rel(seguridad, datos, "Guarda", "")
+Rel(suscripciones, datos, "Guarda", "")
+Rel(pagos, datos, "Guarda", "")
+Rel(cocas, datos, "Guarda", "")
+Rel(cocina, datos, "Guarda", "")
+Rel(logistica, datos, "Guarda", "")
+Rel(compras, datos, "Guarda", "")
+Rel(reportes, datos, "Lee", "")
+
+Rel(datos, bd, "Lectura y escritura", "SQL")
+
+@enduml

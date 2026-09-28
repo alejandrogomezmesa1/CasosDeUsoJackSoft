@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam shadowing true
+skinparam defaultFontName "Inter, Arial, sans-serif"
+
+skinparam actor {
+  BorderColor #0f172a
+  BackgroundColor #fff7ed
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #0f172a
+  ArrowColor #ea580c
+}
+
+skinparam usecase<<hub>> {
+  BackgroundColor #fff7ed
+  BorderColor #ea580c
+}
+
+actor "Usuario / Admin" as actor_user
+
+rectangle "SISTEMA JACKSOFT — SEGURIDAD Y ACCESO (ACCESO)" {
+  usecase "Acceso al sistema" as UC_Hub <<hub>>
+  usecase "Iniciar sesión" as UC_Login <<hub>>
+  usecase "Recuperar/Restablecer contraseña" as UC_Recup
+  usecase "Consultar estado de la cuenta" as UC_Estado
+  usecase "Cerrar sesión" as UC_Logout
+  usecase "Generar reporte" as UC_Reporte
+}
+
+actor_user --> UC_Hub
+UC_Hub .> UC_Login : <<include>>
+UC_Recup ..> UC_Hub : <<extend>>
+UC_Estado ..> UC_Login : <<extend>>
+UC_Logout ..> UC_Login : <<extend>>
+UC_Reporte ..> UC_Hub : <<extend>>
+UC_Reporte .> UC_Login : <<include>>
+@enduml

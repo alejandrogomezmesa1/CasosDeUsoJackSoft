@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam shadowing true
+skinparam defaultFontName "Inter, Arial, sans-serif"
+
+skinparam actor {
+  BorderColor #0f172a
+  BackgroundColor #fff7ed
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #0f172a
+  ArrowColor #ea580c
+}
+
+skinparam usecase<<hub>> {
+  BackgroundColor #fff7ed
+  BorderColor #ea580c
+}
+
+actor "Administrador" as actor_user
+
+rectangle "SISTEMA JACKSOFT — COMPRAS E INVENTARIO (INSUMOS)" {
+  usecase "Gestión de insumos" as UC_Hub <<hub>>
+  usecase "Listar insumos" as UC_Central <<hub>>
+  usecase "Crear insumo" as UC_Top1
+  usecase "Generar reporte de insumos" as UC_Top2
+  usecase "Buscar Insumos" as UC_Bot1
+  usecase "Ver detalle del insumo" as UC_R1
+  usecase "Editar insumo" as UC_R2
+  usecase "Cambiar estado del insumo" as UC_R3
+  usecase "Eliminar insumo" as UC_R4
+}
+
+actor_user --> UC_Hub
+UC_Hub .> UC_Central : <<include>>
+UC_Top1 ..> UC_Hub : <<extend>>
+UC_Top1 .> UC_Central : <<include>>
+UC_Top2 .> UC_Central : <<include>>
+UC_Bot1 ..> UC_Hub : <<extend>>
+UC_Bot1 .> UC_Central : <<include>>
+UC_R1 ..> UC_Central : <<extend>>
+UC_R2 ..> UC_Central : <<extend>>
+UC_R3 ..> UC_Central : <<extend>>
+UC_R4 ..> UC_Central : <<extend>>
+@enduml

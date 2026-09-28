@@ -1,0 +1,25 @@
+@startuml C4_Nivel2_Contenedores
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Nivel 2: Diagrama de Contenedores — JackSoft
+
+Person(usuarios_web, "Cliente y Administrador", "Usuarios que operan desde un computador o navegador web.")
+Person(domiciliario, "Domiciliario", "Repartidor en la calle con teléfono móvil.")
+
+System_Boundary(c1, "Sistema JackSoft") {
+    Container(web, "1. Aplicación Web", "Interfaz Web", "Portal para pedir suscripciones, elegir menús, administrar ventas, cocina y reportes.")
+    Container(movil, "2. Aplicación Móvil", "App Móvil", "Aplicación para el domiciliario: muestra la ruta diaria, entregas y cocas recogidas.")
+    Container(backend, "3. Servidor Backend", "Lógica del Sistema", "Procesa las solicitudes, aplica el cobro de garantía ($70.000), descuenta festivos y coordina la información.")
+    ContainerDb(bd, "4. Base de Datos", "Base de Datos Relacional", "Almacena clientes, usuarios, suscripciones, comprobantes, insumos y rutas.")
+}
+
+Rel(usuarios_web, web, "Usa desde el navegador", "Web")
+Rel(domiciliario, movil, "Usa en su teléfono", "Móvil")
+
+Rel(web, backend, "Envía peticiones y pedidos", "Red interna")
+Rel(movil, backend, "Sincroniza entregas y cocas", "Red móvil")
+Rel(backend, bd, "Consulta y guarda información", "SQL")
+
+@enduml

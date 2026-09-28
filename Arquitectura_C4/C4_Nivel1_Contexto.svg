@@ -1,0 +1,114 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg">
+  
+    <defs>
+      <marker id="flecha-azul" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e40af" />
+      </marker>
+      <marker id="flecha-gris" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569" />
+      </marker>
+      <filter id="sombra" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+      </filter>
+    </defs>
+    
+  <rect width="100%" height="100%" fill="#f8fafc" />
+
+  <!-- ENCABEZADO -->
+  <rect x="50" y="25" width="1100" height="65" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="75" y="53" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Nivel 1: Contexto del Sistema — JackSoft</text>
+  <text x="75" y="73" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="13" fill="#64748b">Vista de caja negra: Roles de usuarios, canales de acceso (Web/Móvil) y servicios externos</text>
+
+  <!-- COLUMNA 1: USUARIOS (IZQUIERDA) -->
+  <g transform="translate(50, 120)" filter="url(#sombra)">
+    <rect width="250" height="80" rx="8" fill="#0c4a6e" stroke="#075985" stroke-width="1.5" />
+    <text x="125" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Cliente / Suscriptor</text>
+    <text x="125" y="48" font-family="sans-serif" font-size="11.5" fill="#e0f2fe" text-anchor="middle">Pide almuerzos, menú y paga</text>
+    <rect x="55" y="56" width="140" height="18" rx="9" fill="#0369a1" />
+    <text x="125" y="69" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Canal: Web y Celular</text>
+  </g>
+
+  <g transform="translate(50, 220)" filter="url(#sombra)">
+    <rect width="250" height="80" rx="8" fill="#0c4a6e" stroke="#075985" stroke-width="1.5" />
+    <text x="125" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Administrador</text>
+    <text x="125" y="48" font-family="sans-serif" font-size="11.5" fill="#e0f2fe" text-anchor="middle">Gestiona ventas, precios y métricas</text>
+    <rect x="55" y="56" width="140" height="18" rx="9" fill="#0369a1" />
+    <text x="125" y="69" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Canal: Portal Web</text>
+  </g>
+
+  <g transform="translate(50, 320)" filter="url(#sombra)">
+    <rect width="250" height="80" rx="8" fill="#0c4a6e" stroke="#075985" stroke-width="1.5" />
+    <text x="125" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Personal de Cocina</text>
+    <text x="125" y="48" font-family="sans-serif" font-size="11.5" fill="#e0f2fe" text-anchor="middle">Revisa pedidos diarios y recetas</text>
+    <rect x="55" y="56" width="140" height="18" rx="9" fill="#0369a1" />
+    <text x="125" y="69" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Canal: Pantalla Web</text>
+  </g>
+
+  <g transform="translate(50, 420)" filter="url(#sombra)">
+    <rect width="250" height="80" rx="8" fill="#0c4a6e" stroke="#075985" stroke-width="1.5" />
+    <text x="125" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Domiciliario</text>
+    <text x="125" y="48" font-family="sans-serif" font-size="11.5" fill="#e0f2fe" text-anchor="middle">Entrega almuerzos y recoge cocas</text>
+    <rect x="55" y="56" width="140" height="18" rx="9" fill="#0284c7" />
+    <text x="125" y="69" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Canal: App Móvil</text>
+  </g>
+
+  <!-- COLUMNA 2: EL SISTEMA COMO UNA SOLA CAJA (CENTRO) -->
+  <g transform="translate(430, 160)" filter="url(#sombra)">
+    <rect width="360" height="290" rx="12" fill="#1d4ed8" stroke="#1e40af" stroke-width="2.5" />
+    <text x="180" y="40" font-family="sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">JackSoft</text>
+    <text x="180" y="65" font-family="sans-serif" font-size="13" font-weight="600" fill="#bfdbfe" text-anchor="middle">[Sistema Integral: Plataforma Web y App Móvil]</text>
+    <line x1="25" y1="80" x2="335" y2="80" stroke="#3b82f6" stroke-width="1.5" />
+    
+    <text x="180" y="108" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Plataforma central unificada que gestiona:</text>
+    
+    <rect x="25" y="125" width="310" height="145" rx="8" fill="#1e40af" opacity="0.6" />
+    <text x="40" y="152" font-family="sans-serif" font-size="12" fill="#ffffff">• <b>Suscripciones:</b> Planes quincenales y mensuales</text>
+    <text x="40" y="177" font-family="sans-serif" font-size="12" fill="#ffffff">• <b>Garantía de Cocas:</b> Depósito único de $70.000 COP</text>
+    <text x="40" y="202" font-family="sans-serif" font-size="12" fill="#ffffff">• <b>Calendario:</b> Descuento automático de días festivos</text>
+    <text x="40" y="227" font-family="sans-serif" font-size="12" fill="#ffffff">• <b>Cocina y Compras:</b> Control de insumos y porciones</text>
+    <text x="40" y="252" font-family="sans-serif" font-size="12" fill="#ffffff">• <b>Logística:</b> Asignación de rutas a domiciliarios</text>
+  </g>
+
+  <!-- COLUMNA 3: SERVICIOS EXTERNOS (DERECHA) -->
+  <g transform="translate(910, 160)" filter="url(#sombra)">
+    <rect width="240" height="80" rx="8" fill="#475569" stroke="#334155" stroke-width="1.5" />
+    <text x="120" y="32" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Bancolombia / Nequi</text>
+    <text x="120" y="54" font-family="sans-serif" font-size="11.5" fill="#cbd5e1" text-anchor="middle">Transferencias y comprobantes</text>
+  </g>
+
+  <g transform="translate(910, 270)" filter="url(#sombra)">
+    <rect width="240" height="80" rx="8" fill="#475569" stroke="#334155" stroke-width="1.5" />
+    <text x="120" y="32" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">WhatsApp</text>
+    <text x="120" y="54" font-family="sans-serif" font-size="11.5" fill="#cbd5e1" text-anchor="middle">Avisos y recordatorios al cliente</text>
+  </g>
+
+  <g transform="translate(910, 380)" filter="url(#sombra)">
+    <rect width="240" height="80" rx="8" fill="#475569" stroke="#334155" stroke-width="1.5" />
+    <text x="120" y="32" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Mapas y Localización</text>
+    <text x="120" y="54" font-family="sans-serif" font-size="11.5" fill="#cbd5e1" text-anchor="middle">Ubicación de rutas de entrega</text>
+  </g>
+
+  <!-- CONEXIONES -->
+  <!-- Usuarios a JackSoft -->
+  <line x1="300" y1="160" x2="430" y2="230" stroke="#1e40af" stroke-width="2" marker-end="url(#flecha-azul)" />
+  <line x1="300" y1="260" x2="430" y2="275" stroke="#1e40af" stroke-width="2" marker-end="url(#flecha-azul)" />
+  <line x1="300" y1="360" x2="430" y2="330" stroke="#1e40af" stroke-width="2" marker-end="url(#flecha-azul)" />
+  <line x1="300" y1="460" x2="430" y2="385" stroke="#1e40af" stroke-width="2" marker-end="url(#flecha-azul)" />
+
+  <!-- JackSoft a Externos -->
+  <line x1="790" y1="230" x2="910" y2="200" stroke="#475569" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#flecha-gris)" />
+  <text x="850" y="210" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">Valida pagos</text>
+
+  <line x1="790" y1="305" x2="910" y2="310" stroke="#475569" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#flecha-gris)" />
+  <text x="850" y="300" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">Notifica</text>
+
+  <line x1="790" y1="380" x2="910" y2="420" stroke="#475569" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#flecha-gris)" />
+  <text x="850" y="410" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">Guía rutas</text>
+
+  <!-- NOTA AL PIE PEDAGÓGICA -->
+  <g transform="translate(150, 560)">
+    <rect width="900" height="55" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="450" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">🔍 ¿Cómo se diferencian el Nivel 1 y el Nivel 2?</text>
+    <text x="450" y="44" font-family="sans-serif" font-size="11.5" fill="#475569" text-anchor="middle">• <b>Nivel 1 (Aquí):</b> JackSoft es una sola caja negra. Indica qué roles lo usan, por qué canal (Web/Móvil) y con qué bancos/servicios habla.</text>
+  </g>
+</svg>

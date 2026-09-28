@@ -1,0 +1,575 @@
+<svg width="2400" height="2300" viewBox="0 0 2400 2300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="sombra" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#f8fafc" />
+
+  <!-- ENCABEZADO -->
+  <rect x="50" y="25" width="2300" height="75" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <text x="80" y="58" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Nivel 4: Diagrama de Clases del Dominio — JackSoft (33 Clases / Tablas Oficiales)</text>
+  <text x="80" y="82" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="14" fill="#64748b">Inventario exhaustivo de las 33 clases de entidad agrupadas en sus 7 módulos oficiales de base de datos (DBML)</text>
+
+  <!-- ========================================================================= -->
+  <!-- FILA 1: MÓDULO 6 (SUSCRIPCIONES - 5 CLASES) Y MÓDULO 5 (SERVICIOS - 3 CLASES) -->
+  <!-- ========================================================================= -->
+  <!-- MÓDULO 6: SUSCRIPCIONES Y CLIENTES (5 Clases) -->
+  <g transform="translate(50, 125)">
+    <rect width="1480" height="420" rx="10" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2" />
+    <rect width="1480" height="35" rx="10" fill="#0284c7" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 1: Clientes y Suscripciones (5 Clases — Núcleo Comercial)</text>
+
+    <!-- Cliente -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="270" height="230" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#0284c7" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Cliente</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ documento: varchar [UQ]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ nombre_completo: varchar</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#334155">+ telefono / correo: varchar</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#0369a1">+ modalidad: fija / hibrida</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ restricciones: varchar</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#0369a1">+ tiene_cocas_propias: bool</text>
+      <text x="12" y="156" font-family="monospace" font-size="10.5" fill="#334155">+ password: hash (app móvil)</text>
+      <text x="12" y="172" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="182" x2="265" y2="182" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="200" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarCliente()</text>
+      <text x="12" y="216" font-family="monospace" font-size="10.5" fill="#0f172a">+ gestionarDirecciones()</text>
+    </g>
+
+    <!-- DireccionCliente -->
+    <g transform="translate(310, 50)" filter="url(#sombra)">
+      <rect width="260" height="200" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <rect width="260" height="26" rx="6" fill="#0284c7" />
+      <text x="130" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">DireccionCliente</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ cliente_id: int [FK]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ zona_cobertura_id: int [FK]</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#0369a1">+ dia_semana: Lun..Vie</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#334155">+ direccion: varchar</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ latitud / longitud: decimal</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="150" x2="255" y2="150" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="170" font-family="monospace" font-size="10.5" fill="#0f172a">+ georreferenciar()</text>
+      <text x="12" y="186" font-family="monospace" font-size="10.5" fill="#0f172a">+ validarEnZona(): bool</text>
+    </g>
+
+    <!-- Suscripcion -->
+    <g transform="translate(590, 50)" filter="url(#sombra)">
+      <rect width="290" height="260" rx="6" fill="#ffffff" stroke="#0369a1" stroke-width="2" />
+      <rect width="290" height="26" rx="6" fill="#0369a1" />
+      <text x="145" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Suscripcion (Entidad Núcleo)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ cliente_id, servicio_id: int</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#0369a1">+ tipo_menu: estandar/pollo/cerdo</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#0369a1">+ tipo_venta: nueva/renovacion</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#334155">+ fecha_inicio / fin: date</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ valor_plan: decimal</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#b91c1c" font-weight="bold">+ cobro_cocas: $70.000 COP</text>
+      <text x="12" y="156" font-family="monospace" font-size="10.5" fill="#334155">+ recargo_menu: $10.000 COP</text>
+      <text x="12" y="172" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ valor_total: decimal</text>
+      <text x="12" y="188" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: pend/activa/vencida</text>
+      <line x1="5" y1="198" x2="285" y2="198" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="216" font-family="monospace" font-size="10.5" fill="#0f172a">+ liquidarSuscripcion()</text>
+      <text x="12" y="232" font-family="monospace" font-size="10.5" fill="#0f172a">+ descontarFestivos()</text>
+      <text x="12" y="248" font-family="monospace" font-size="10.5" fill="#0f172a">+ renovarSuscripcion()</text>
+    </g>
+
+    <!-- Pago -->
+    <g transform="translate(900, 50)" filter="url(#sombra)">
+      <rect width="270" height="200" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#0284c7" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Pago</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ suscripcion_id: int [FK]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ valor: decimal</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#334155">+ comprobante_url: varchar</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: pend/aprobado/rech</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ fecha_pago: timestamp</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#334155">+ validado_por_usuario_id: int</text>
+      <line x1="5" y1="150" x2="265" y2="150" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="170" font-family="monospace" font-size="10.5" fill="#0f172a">+ validarPagoManual()</text>
+      <text x="12" y="186" font-family="monospace" font-size="10.5" fill="#0f172a">+ adjuntarComprobante()</text>
+    </g>
+
+    <!-- ZonaCobertura -->
+    <g transform="translate(1190, 50)" filter="url(#sombra)">
+      <rect width="270" height="150" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#0284c7" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">ZonaCobertura</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar [UNIQUE]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ poligono: GeoJSON</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="102" x2="265" y2="102" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="122" font-family="monospace" font-size="10.5" fill="#0f172a">+ contienePunto(): bool</text>
+      <text x="12" y="138" font-family="monospace" font-size="10.5" fill="#0f172a">+ trazarPoligonoAdmin()</text>
+    </g>
+  </g>
+
+  <!-- MÓDULO 5: SERVICIOS Y CALENDARIO (3 Clases) -->
+  <g transform="translate(1550, 125)">
+    <rect width="800" height="420" rx="10" fill="#f0fdfa" stroke="#99f6e4" stroke-width="2" />
+    <rect width="800" height="35" rx="10" fill="#0d9488" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 2: Servicios y Agenda (3 Clases — Catálogo y Festivos)</text>
+
+    <!-- CategoriaServicio -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="230" height="130" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+      <rect width="230" height="24" rx="6" fill="#0d9488" />
+      <text x="115" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">CategoriaServicio</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar [UQ]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo/inactivo</text>
+      <line x1="5" y1="92" x2="225" y2="92" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="112" font-family="monospace" font-size="10.5" fill="#0f172a">+ listarCategorias()</text>
+    </g>
+
+    <!-- Servicio -->
+    <g transform="translate(270, 50)" filter="url(#sombra)">
+      <rect width="240" height="175" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+      <rect width="240" height="24" rx="6" fill="#0d9488" />
+      <text x="120" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Servicio</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ categoria_id: int [FK]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#0d9488">+ tipo_plan: sem/quin/men</text>
+      <text x="10" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ dias_duracion: int</text>
+      <text x="10" y="116" font-family="monospace" font-size="10.5" fill="#047857">+ precio_base: decimal</text>
+      <line x1="5" y1="126" x2="235" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ consultarTarifa()</text>
+      <text x="10" y="162" font-family="monospace" font-size="10.5" fill="#0f172a">+ calcularFechaFin()</text>
+    </g>
+
+    <!-- Calendario -->
+    <g transform="translate(530, 50)" filter="url(#sombra)">
+      <rect width="250" height="175" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+      <rect width="250" height="24" rx="6" fill="#0d9488" />
+      <text x="125" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Calendario (Festivos)</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ fecha: date [UNIQUE]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#b91c1c" font-weight="bold">+ es_festivo: boolean</text>
+      <text x="10" y="98" font-family="monospace" font-size="10.5" fill="#64748b">+ descripcion: varchar</text>
+      <line x1="5" y1="110" x2="245" y2="110" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="130" font-family="monospace" font-size="10.5" fill="#0f172a">+ esDiaHabil(): bool</text>
+      <text x="10" y="148" font-family="monospace" font-size="10.5" fill="#0f172a">+ contarFestivos(): int</text>
+      <text x="10" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ listarFeriadosMes()</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- FILA 2: MÓDULO 7 (LOGÍSTICA - 5 CLASES) Y MÓDULO 1 & 2 (SEGURIDAD/USUARIOS - 5 CLASES) -->
+  <!-- ========================================================================= -->
+  <!-- MÓDULO 7: LOGÍSTICA Y DISTRIBUCIÓN (5 Clases) -->
+  <g transform="translate(50, 565)">
+    <rect width="1480" height="420" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2" />
+    <rect width="1480" height="35" rx="10" fill="#16a34a" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 3: Logística, Rutas y Control de Cocas (5 Clases — Distribución)</text>
+
+    <!-- Ruta -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="270" height="180" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#16a34a" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Ruta</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ zona_cobertura_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#15803d">+ domiciliario_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ fecha: date</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="126" x2="265" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ generarRutaDiaria()</text>
+      <text x="12" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ ordenarParadasOptimas()</text>
+    </g>
+
+    <!-- RutaCliente (Parada Diaria / Cocas) -->
+    <g transform="translate(310, 50)" filter="url(#sombra)">
+      <rect width="290" height="250" rx="6" fill="#ffffff" stroke="#15803d" stroke-width="2" />
+      <rect width="290" height="26" rx="6" fill="#15803d" />
+      <text x="145" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">RutaCliente (Parada y Cocas)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ ruta_id: int [FK]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ suscripcion_id: int [FK]</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#334155">+ orden_entrega: int (1,2,3)</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#15803d">+ estado: pend/en_ruta/entregado</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ hora_entrega: timestamp</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ cocas_entregadas: int</text>
+      <text x="12" y="156" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ cocas_recogidas: int</text>
+      <line x1="5" y1="168" x2="285" y2="168" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="188" font-family="monospace" font-size="10.5" fill="#0f172a">+ confirmarEntrega()</text>
+      <text x="12" y="206" font-family="monospace" font-size="10.5" fill="#0f172a">+ balancearCocas(rec, ent)</text>
+      <text x="12" y="224" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarFalloEntrega()</text>
+    </g>
+
+    <!-- Incidencia -->
+    <g transform="translate(620, 50)" filter="url(#sombra)">
+      <rect width="270" height="230" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#b91c1c" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Incidencia</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ tipo_reportante: clie/domi</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ cliente_id / domi_id: int</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#334155">+ ruta_cliente_id: int [FK]</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#b91c1c" font-weight="bold">+ tipo: coca_danada/ausente</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#334155">+ descripcion / foto_url</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: abierta/gestion/res</text>
+      <line x1="5" y1="150" x2="265" y2="150" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="170" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarNovedad()</text>
+      <text x="12" y="188" font-family="monospace" font-size="10.5" fill="#0f172a">+ cargarEvidenciaFoto()</text>
+      <text x="12" y="206" font-family="monospace" font-size="10.5" fill="#0f172a">+ aplicarCobroReposicion()</text>
+    </g>
+
+    <!-- SuspensionEntrega -->
+    <g transform="translate(910, 50)" filter="url(#sombra)">
+      <rect width="260" height="180" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+      <rect width="260" height="26" rx="6" fill="#16a34a" />
+      <text x="130" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">SuspensionEntrega</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ suscripcion_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#b91c1c">+ fecha_suspendida: date</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ motivo / fecha_solicitud</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: aprobado</text>
+      <line x1="5" y1="126" x2="255" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarAusencia()</text>
+      <text x="12" y="162" font-family="monospace" font-size="9.5" fill="#64748b">(Sin reintegro monetario)</text>
+    </g>
+
+    <!-- Geolocalizacion -->
+    <g transform="translate(1190, 50)" filter="url(#sombra)">
+      <rect width="270" height="180" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+      <rect width="270" height="26" rx="6" fill="#16a34a" />
+      <text x="135" y="18" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Geolocalizacion (GPS)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ ruta_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ domiciliario_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#15803d">+ latitud / longitud: decimal</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#334155">+ hora_ubicacion: timestamp</text>
+      <line x1="5" y1="126" x2="265" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarPosicionGPS()</text>
+      <text x="12" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ consultarRastreoEnVivo()</text>
+    </g>
+  </g>
+
+  <!-- MÓDULO 1 & 2: CONFIGURACIÓN Y USUARIOS (5 Clases: Rol, Permiso, RolPermiso, Usuario, Acceso) -->
+  <g transform="translate(1550, 565)">
+    <rect width="800" height="420" rx="10" fill="#faf5ff" stroke="#e9d5ff" stroke-width="2" />
+    <rect width="800" height="35" rx="10" fill="#9333ea" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 4: Seguridad, Roles y Accesos (5 Clases — RBAC y Auditoría)</text>
+
+    <!-- Rol -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="230" height="150" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.5" />
+      <rect width="230" height="24" rx="6" fill="#9333ea" />
+      <text x="115" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Rol</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#7e22ce">+ nombre: varchar [UQ]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo/inactivo</text>
+      <line x1="5" y1="92" x2="225" y2="92" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="112" font-family="monospace" font-size="10.5" fill="#0f172a">+ asignarPermiso()</text>
+      <text x="10" y="130" font-family="monospace" font-size="10.5" fill="#0f172a">+ verificarProteccion()</text>
+    </g>
+
+    <!-- Permiso -->
+    <g transform="translate(270, 50)" filter="url(#sombra)">
+      <rect width="240" height="150" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.5" />
+      <rect width="240" height="24" rx="6" fill="#9333ea" />
+      <text x="120" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Permiso</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#7e22ce">+ modulo / accion: varchar</text>
+      <text x="10" y="98" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo/inactivo</text>
+      <line x1="5" y1="108" x2="235" y2="108" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="128" font-family="monospace" font-size="10.5" fill="#0f172a">+ validarAcceso(): bool</text>
+    </g>
+
+    <!-- RolPermiso -->
+    <g transform="translate(530, 50)" filter="url(#sombra)">
+      <rect width="250" height="130" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.5" />
+      <rect width="250" height="24" rx="6" fill="#9333ea" />
+      <text x="125" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">RolPermiso (Intermedia M:N)</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ rol_id: int [FK]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ permiso_id: int [FK]</text>
+      <line x1="5" y1="92" x2="245" y2="92" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="112" font-family="monospace" font-size="10.5" fill="#0f172a">+ vincularRolPermiso()</text>
+    </g>
+
+    <!-- Usuario -->
+    <g transform="translate(20, 220)" filter="url(#sombra)">
+      <rect width="360" height="180" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.5" />
+      <rect width="360" height="24" rx="6" fill="#9333ea" />
+      <text x="180" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Usuario (Backoffice)</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#7e22ce">+ rol_id: int [FK]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ nombre_completo / documento: varchar</text>
+      <text x="10" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ correo / password: hash (bcrypt)</text>
+      <text x="10" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / pendiente</text>
+      <line x1="5" y1="126" x2="355" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ autenticar(usuario, password)</text>
+      <text x="10" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ autorizarAccion(modulo, accion)</text>
+    </g>
+
+    <!-- Acceso -->
+    <g transform="translate(410, 220)" filter="url(#sombra)">
+      <rect width="370" height="180" rx="6" fill="#ffffff" stroke="#9333ea" stroke-width="1.5" />
+      <rect width="370" height="24" rx="6" fill="#9333ea" />
+      <text x="185" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Acceso (Auditoría / Login)</text>
+      <text x="10" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="10" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ usuario_id / cliente_id / empleado_id: int [FK]</text>
+      <text x="10" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ fecha_hora: timestamp</text>
+      <text x="10" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ ip: varchar</text>
+      <text x="10" y="116" font-family="monospace" font-size="10.5" fill="#7e22ce">+ resultado: exitoso / fallido (conteo)</text>
+      <line x1="5" y1="126" x2="365" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="10" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarLogin()</text>
+      <text x="10" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ bloquearPorIntentosFallidos()</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- FILA 3: MÓDULO 3 (COMPRAS - 6 CLASES) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 1005)">
+    <rect width="2300" height="380" rx="10" fill="#fffbeb" stroke="#fde68a" stroke-width="2" />
+    <rect width="2300" height="35" rx="10" fill="#d97706" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 5: Compras, Proveedores e Inventario (6 Clases — Cadena de Abastecimiento)</text>
+
+    <!-- CategoriaInsumo -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="340" height="150" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="340" height="24" rx="6" fill="#d97706" />
+      <text x="170" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">CategoriaInsumo</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="64" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar [UNIQUE]</text>
+      <text x="12" y="84" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="96" x2="335" y2="96" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="118" font-family="monospace" font-size="10.5" fill="#0f172a">+ clasificarInsumos()</text>
+    </g>
+
+    <!-- Insumo -->
+    <g transform="translate(390, 50)" filter="url(#sombra)">
+      <rect width="360" height="200" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="360" height="24" rx="6" fill="#d97706" />
+      <text x="180" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Insumo</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="60" font-family="monospace" font-size="10.5" fill="#334155">+ categoria_id: int [FK]</text>
+      <text x="12" y="76" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar</text>
+      <text x="12" y="92" font-family="monospace" font-size="10.5" fill="#334155">+ unidad_medida: varchar (kg, lt, gr)</text>
+      <text x="12" y="108" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ cantidad_disponible: decimal</text>
+      <text x="12" y="124" font-family="monospace" font-size="10.5" fill="#b91c1c">+ stock_minimo: decimal</text>
+      <text x="12" y="140" font-family="monospace" font-size="10.5" fill="#334155">+ precio_unitario_referencia: dec</text>
+      <line x1="5" y1="150" x2="355" y2="150" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="170" font-family="monospace" font-size="10.5" fill="#0f172a">+ alertarStockBajo(): bool</text>
+      <text x="12" y="186" font-family="monospace" font-size="10.5" fill="#0f172a">+ descontarPorcion()</text>
+    </g>
+
+    <!-- Proveedor -->
+    <g transform="translate(780, 50)" filter="url(#sombra)">
+      <rect width="360" height="175" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="360" height="24" rx="6" fill="#d97706" />
+      <text x="180" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Proveedor</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ nombre / razon_social: varchar</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ documento: varchar [UNIQUE]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ contacto / direccion: varchar</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="126" x2="355" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ asociarCatalogo()</text>
+      <text x="12" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ evaluarCumplimiento()</text>
+    </g>
+
+    <!-- InsumoProveedor -->
+    <g transform="translate(1170, 50)" filter="url(#sombra)">
+      <rect width="350" height="175" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="350" height="24" rx="6" fill="#d97706" />
+      <text x="175" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">InsumoProveedor (Intermedia M:N)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ insumo_id, proveedor_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#047857">+ precio_unitario: decimal</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ tiempo_entrega_dias: int</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#d97706">+ es_proveedor_principal: bool</text>
+      <line x1="5" y1="126" x2="345" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ seleccionarMejorOpcion()</text>
+    </g>
+
+    <!-- Compra -->
+    <g transform="translate(1550, 50)" filter="url(#sombra)">
+      <rect width="340" height="175" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="340" height="24" rx="6" fill="#d97706" />
+      <text x="170" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Compra</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ proveedor_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ fecha_compra: date</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ valor_total: decimal</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: pend/aprobada/anulada</text>
+      <line x1="5" y1="126" x2="335" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ registrarFacturaCompra()</text>
+      <text x="12" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ abastecerStock()</text>
+    </g>
+
+    <!-- CompraDetalle -->
+    <g transform="translate(1920, 50)" filter="url(#sombra)">
+      <rect width="350" height="175" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.5" />
+      <rect width="350" height="24" rx="6" fill="#d97706" />
+      <text x="175" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">CompraDetalle (Detalle 1:N)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ compra_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ insumo_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ cantidad: decimal</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#047857">+ precio_unitario / subtotal: dec</text>
+      <line x1="5" y1="126" x2="345" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ calcularSubtotal()</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- FILA 4: MÓDULO 4 (PRODUCCIÓN Y COCINA - 9 CLASES) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 1405)">
+    <rect width="2300" height="820" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="2" />
+    <rect width="2300" height="35" rx="10" fill="#dc2626" />
+    <text x="20" y="23" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">📦 Módulo 6 y 7: Producción, Cocina y Recetas (9 Clases — Operación de Almuerzos)</text>
+
+    <!-- SUBFILA 1: Empleado, CategoriaPreparacion, Preparacion, Menu, MenuPreparacion -->
+    <!-- Empleado -->
+    <g transform="translate(20, 50)" filter="url(#sombra)">
+      <rect width="420" height="200" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="420" height="24" rx="6" fill="#dc2626" />
+      <text x="210" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Empleado</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ nombre_completo: varchar</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ documento: varchar [UNIQUE]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#b91c1c" font-weight="bold">+ cargo: cocina / domiciliario / administrador</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#334155">+ telefono / correo / fecha_ingreso</text>
+      <text x="12" y="134" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="146" x2="415" y2="146" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="166" font-family="monospace" font-size="10.5" fill="#0f172a">+ asignarTurno()</text>
+      <text x="12" y="184" font-family="monospace" font-size="10.5" fill="#0f172a">+ vincularUsuarioApp()</text>
+    </g>
+
+    <!-- CategoriaPreparacion -->
+    <g transform="translate(470, 50)" filter="url(#sombra)">
+      <rect width="380" height="150" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="380" height="24" rx="6" fill="#dc2626" />
+      <text x="190" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">CategoriaPreparacion</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="64" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar [UNIQUE] (Proteína/Guarnición)</text>
+      <text x="12" y="84" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="96" x2="375" y2="96" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="118" font-family="monospace" font-size="10.5" fill="#0f172a">+ clasificarPlatos()</text>
+    </g>
+
+    <!-- Preparacion -->
+    <g transform="translate(880, 50)" filter="url(#sombra)">
+      <rect width="380" height="180" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="380" height="24" rx="6" fill="#dc2626" />
+      <text x="190" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Preparacion (Plato Individual)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ categoria_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar (Arroz, Pechuga, Ensalada)</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ descripcion: varchar</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="126" x2="375" y2="126" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="146" font-family="monospace" font-size="10.5" fill="#0f172a">+ definirReceta()</text>
+      <text x="12" y="164" font-family="monospace" font-size="10.5" fill="#0f172a">+ asociarAMenu()</text>
+    </g>
+
+    <!-- Menu -->
+    <g transform="translate(1290, 50)" filter="url(#sombra)">
+      <rect width="450" height="180" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="450" height="24" rx="6" fill="#dc2626" />
+      <text x="225" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Menu (Jornada Diaria)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ nombre: varchar (Menú Ejecutivo)</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#b91c1c" font-weight="bold">+ fecha: date [UNIQUE]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="110" x2="445" y2="110" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="132" font-family="monospace" font-size="10.5" fill="#0f172a">+ publicarMenuDelDia()</text>
+      <text x="12" y="152" font-family="monospace" font-size="10.5" fill="#0f172a">+ validarDisponibilidadProteinas()</text>
+    </g>
+
+    <!-- MenuPreparacion -->
+    <g transform="translate(1770, 50)" filter="url(#sombra)">
+      <rect width="490" height="140" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="490" height="24" rx="6" fill="#dc2626" />
+      <text x="245" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">MenuPreparacion (Intermedia M:N)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ menu_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ preparacion_id: int [FK]</text>
+      <line x1="5" y1="92" x2="485" y2="92" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="114" font-family="monospace" font-size="10.5" fill="#0f172a">+ estructurarPlatosDelDia()</text>
+    </g>
+
+    <!-- SUBFILA 2: FichaTecnica, FichaTecnicaDetalle, OrdenProduccion, OrdenProduccionDetalle -->
+    <!-- FichaTecnica -->
+    <g transform="translate(20, 275)" filter="url(#sombra)">
+      <rect width="420" height="230" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="420" height="24" rx="6" fill="#dc2626" />
+      <text x="210" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">FichaTecnica (Receta Maestra)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ preparacion_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ tiempo_preparacion_min: int</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ procedimiento: text</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#b91c1c">+ numero_porciones: int</text>
+      <text x="12" y="134" font-family="monospace" font-size="10.5" fill="#047857">+ costo_unitario_estimado: decimal</text>
+      <text x="12" y="152" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: activo / inactivo</text>
+      <line x1="5" y1="162" x2="415" y2="162" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="182" font-family="monospace" font-size="10.5" fill="#0f172a">+ calcularCostoPorcion()</text>
+      <text x="12" y="200" font-family="monospace" font-size="10.5" fill="#0f172a">+ escalarIngredientes(porciones)</text>
+    </g>
+
+    <!-- FichaTecnicaDetalle -->
+    <g transform="translate(470, 275)" filter="url(#sombra)">
+      <rect width="380" height="180" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="380" height="24" rx="6" fill="#dc2626" />
+      <text x="190" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">FichaTecnicaDetalle (Ingredientes)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ ficha_tecnica_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ insumo_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#047857" font-weight="bold">+ cantidad_requerida: decimal</text>
+      <line x1="5" y1="112" x2="375" y2="112" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="134" font-family="monospace" font-size="10.5" fill="#0f172a">+ obtenerCostoIngrediente()</text>
+    </g>
+
+    <!-- OrdenProduccion -->
+    <g transform="translate(880, 275)" filter="url(#sombra)">
+      <rect width="660" height="220" rx="6" fill="#ffffff" stroke="#b91c1c" stroke-width="2" />
+      <rect width="660" height="24" rx="6" fill="#b91c1c" />
+      <text x="330" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">OrdenProduccion (Planificación Diaria Cocina)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ fecha_produccion: date</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ menu_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#334155">+ empleado_responsable_id: int [FK] (Jefe de Cocina)</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: planificada / en_preparacion / finalizada</text>
+      <line x1="5" y1="128" x2="655" y2="128" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="150" font-family="monospace" font-size="10.5" fill="#0f172a">+ consolidarAlmuerzosDiarios(suscripciones_activas)</text>
+      <text x="12" y="170" font-family="monospace" font-size="10.5" fill="#0f172a">+ calcularExplosionInsumos()</text>
+      <text x="12" y="190" font-family="monospace" font-size="10.5" fill="#0f172a">+ finalizarProduccion()</text>
+    </g>
+
+    <!-- OrdenProduccionDetalle -->
+    <g transform="translate(1570, 275)" filter="url(#sombra)">
+      <rect width="690" height="220" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.5" />
+      <rect width="690" height="24" rx="6" fill="#dc2626" />
+      <text x="345" y="17" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">OrdenProduccionDetalle (Ejecución en Tiempo Real)</text>
+      <text x="12" y="44" font-family="monospace" font-size="10.5" fill="#334155">+ id: int [PK]</text>
+      <text x="12" y="62" font-family="monospace" font-size="10.5" fill="#334155">+ orden_produccion_id: int [FK]</text>
+      <text x="12" y="80" font-family="monospace" font-size="10.5" fill="#334155">+ preparacion_id: int [FK]</text>
+      <text x="12" y="98" font-family="monospace" font-size="10.5" fill="#b91c1c">+ cantidad_requerida: int (planeado)</text>
+      <text x="12" y="116" font-family="monospace" font-size="10.5" fill="#047857">+ cantidad_producida: int (ejecutado)</text>
+      <text x="12" y="134" font-family="monospace" font-size="10.5" fill="#334155">+ hora_terminacion: timestamp</text>
+      <text x="12" y="152" font-family="monospace" font-size="10.5" fill="#64748b">+ estado: pendiente / terminada</text>
+      <line x1="5" y1="162" x2="685" y2="162" stroke="#e2e8f0" stroke-width="1" />
+      <text x="12" y="184" font-family="monospace" font-size="10.5" fill="#0f172a">+ actualizarProgresoCocina(producidas)</text>
+      <text x="12" y="202" font-family="monospace" font-size="10.5" fill="#0f172a">+ marcarTerminado()</text>
+    </g>
+
+    <text x="1150" y="525" font-family="sans-serif" font-size="12" fill="#b91c1c" text-anchor="middle">🔗 Cadena de Producción: Suscripciones ➔ OrdenProduccion ➔ FichaTecnica ➔ Descuento de Insumos</text>
+  </g>
+
+  <!-- NOTA AL PIE -->
+  <g transform="translate(50, 2240)">
+    <rect width="2300" height="45" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="1150" y="28" font-family="sans-serif" font-size="13" fill="#334155" text-anchor="middle">🎯 <b>Validación Total de Arquitectura C4 (Nivel 4):</b> 33 clases = 33 tablas del modelo relacional oficial (DBML). Cada clase tiene sus atributos exactos, tipos de datos, claves foráneas y métodos de negocio.</text>
+  </g>
+</svg>

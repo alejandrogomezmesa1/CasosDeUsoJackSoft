@@ -1,0 +1,48 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam shadowing true
+skinparam defaultFontName "Inter, Arial, sans-serif"
+
+skinparam actor {
+  BorderColor #0f172a
+  BackgroundColor #fff7ed
+}
+
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #0f172a
+  ArrowColor #ea580c
+}
+
+skinparam usecase<<hub>> {
+  BackgroundColor #fff7ed
+  BorderColor #ea580c
+}
+
+actor "Logística" as actor_user
+
+rectangle "SISTEMA JACKSOFT — LOGÍSTICA Y DOMICILIOS (MONITOREO DE ENTREGA TIEMPO REAL)" {
+  usecase "Monitoreo de entregas" as UC_Hub <<hub>>
+  usecase "Consultar avance de entregas en tiempo real" as UC_Central <<hub>>
+  usecase "Crear zonas" as UC_Top1
+  usecase "Generar reporte de entregas en tiempo real" as UC_Top2
+  usecase "Buscar entregas en tiempo real" as UC_Bot1
+  usecase "Ver ubicación de domiciliarios en tiempo real" as UC_R1
+  usecase "Consultar estado de cocas en tiempo real" as UC_R2
+  usecase "Editar zonas" as UC_R3
+}
+
+actor_user --> UC_Hub
+UC_Hub .> UC_Central : <<include>>
+UC_Top1 ..> UC_Hub : <<extend>>
+UC_Top1 .> UC_Central : <<include>>
+UC_Top2 .> UC_Central : <<include>>
+UC_Bot1 ..> UC_Hub : <<extend>>
+UC_Bot1 .> UC_Central : <<include>>
+UC_R1 ..> UC_Central : <<extend>>
+UC_R2 ..> UC_Central : <<extend>>
+UC_R3 ..> UC_Central : <<extend>>
+@enduml

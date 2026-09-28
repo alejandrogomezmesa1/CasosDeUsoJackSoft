@@ -1,0 +1,390 @@
+@startuml C4_Nivel4_Codigo_Clases
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam roundcorner 8
+skinparam shadowing true
+skinparam defaultFontName sans-serif
+
+title Nivel 4: Diagrama de Clases del Dominio — JackSoft (33 Clases / Tablas del DBML)
+
+package "1. Configuración (RBAC)" #f1f5f9 {
+  class Rol {
+    + id: int [PK]
+    + nombre: varchar [UNIQUE]
+    + estado: activo / inactivo
+    + asignarPermiso()
+  }
+
+  class Permiso {
+    + id: int [PK]
+    + nombre: varchar
+    + modulo: varchar
+    + accion: varchar
+    + estado: activo / inactivo
+    + validarAccion()
+  }
+
+  class RolPermiso {
+    + id: int [PK]
+    + rol_id: int [FK]
+    + permiso_id: int [FK]
+  }
+}
+
+package "2. Usuarios y Accesos" #faf5ff {
+  class Usuario {
+    + id: int [PK]
+    + rol_id: int [FK]
+    + nombre_completo: varchar
+    + documento: varchar [UNIQUE]
+    + correo: varchar [UNIQUE]
+    + password: varchar (hash)
+    + telefono: varchar
+    + estado: activo / pendiente
+    + autenticar()
+  }
+
+  class Acceso {
+    + id: int [PK]
+    + usuario_id: int [FK, opcional]
+    + cliente_id: int [FK, opcional]
+    + empleado_id: int [FK, opcional]
+    + fecha_hora: timestamp
+    + ip: varchar
+    + resultado: exitoso / fallido
+    + intentos_fallidos_consecutivos: int
+    + registrarIntento()
+  }
+}
+
+package "3. Compras e Insumos" #fffbeb {
+  class CategoriaInsumo {
+    + id: int [PK]
+    + nombre: varchar [UNIQUE]
+    + estado: activo / inactivo
+  }
+
+  class Insumo {
+    + id: int [PK]
+    + categoria_id: int [FK]
+    + nombre: varchar
+    + unidad_medida: varchar
+    + cantidad_disponible: decimal
+    + stock_minimo: decimal
+    + precio_unitario_referencia: decimal
+    + estado: activo / inactivo
+    + alertarStockBajo(): bool
+    + descontarStock()
+  }
+
+  class Proveedor {
+    + id: int [PK]
+    + nombre: varchar
+    + documento: varchar [UNIQUE]
+    + contacto: varchar
+    + direccion: varchar
+    + estado: activo / inactivo
+  }
+
+  class InsumoProveedor {
+    + id: int [PK]
+    + insumo_id: int [FK]
+    + proveedor_id: int [FK]
+    + precio_unitario: decimal
+    + tiempo_entrega_dias: int
+    + es_proveedor_principal: bool
+    + estado: activo / inactivo
+  }
+
+  class Compra {
+    + id: int [PK]
+    + proveedor_id: int [FK]
+    + fecha_compra: date
+    + valor_total: decimal
+    + estado: pendiente / aprobada / anulada
+    + registrarCompra()
+  }
+
+  class CompraDetalle {
+    + id: int [PK]
+    + compra_id: int [FK]
+    + insumo_id: int [FK]
+    + cantidad: decimal
+    + precio_unitario: decimal
+    + subtotal: decimal
+  }
+}
+
+package "4. Producción y Cocina" #fef2f2 {
+  class Empleado {
+    + id: int [PK]
+    + nombre_completo: varchar
+    + documento: varchar [UNIQUE]
+    + cargo: cocina / domiciliario / admin
+    + telefono: varchar
+    + correo: varchar
+    + fecha_ingreso: date
+    + estado: activo / inactivo
+  }
+
+  class CategoriaPreparacion {
+    + id: int [PK]
+    + nombre: varchar [UNIQUE]
+    + estado: activo / inactivo
+  }
+
+  class Preparacion {
+    + id: int [PK]
+    + categoria_id: int [FK]
+    + nombre: varchar
+    + descripcion: varchar
+    + estado: activo / inactivo
+  }
+
+  class Menu {
+    + id: int [PK]
+    + nombre: varchar
+    + fecha: date [UNIQUE]
+    + estado: activo / inactivo
+    + publicarMenu()
+  }
+
+  class MenuPreparacion {
+    + id: int [PK]
+    + menu_id: int [FK]
+    + preparacion_id: int [FK]
+  }
+
+  class FichaTecnica {
+    + id: int [PK]
+    + preparacion_id: int [FK]
+    + tiempo_preparacion_min: int
+    + procedimiento: text
+    + numero_porciones: int
+    + costo_unitario_estimado: decimal
+    + estado: activo / inactivo
+    + calcularCostoPorcion()
+  }
+
+  class FichaTecnicaDetalle {
+    + id: int [PK]
+    + ficha_tecnica_id: int [FK]
+    + insumo_id: int [FK]
+    + cantidad_requerida: decimal
+  }
+
+  class OrdenProduccion {
+    + id: int [PK]
+    + fecha_produccion: date
+    + menu_id: int [FK]
+    + empleado_responsable_id: int [FK]
+    + estado: planificada / en_preparacion / finalizada
+    + consolidarAlmuerzosDiarios()
+  }
+
+  class OrdenProduccionDetalle {
+    + id: int [PK]
+    + orden_produccion_id: int [FK]
+    + preparacion_id: int [FK]
+    + cantidad_requerida: int
+    + cantidad_producida: int
+    + hora_terminacion: timestamp
+    + estado: pendiente / terminada
+  }
+}
+
+package "5. Servicios y Agenda" #f0fdfa {
+  class CategoriaServicio {
+    + id: int [PK]
+    + nombre: varchar [UNIQUE]
+    + estado: activo / inactivo
+  }
+
+  class Servicio {
+    + id: int [PK]
+    + categoria_id: int [FK]
+    + tipo_plan: semanal / quincenal / mensual
+    + dias_duracion: int
+    + precio_base: decimal
+    + estado: activo / inactivo
+    + consultarTarifa()
+  }
+
+  class Calendario {
+    + id: int [PK]
+    + fecha: date [UNIQUE]
+    + es_festivo: bool
+    + descripcion: varchar
+    + esDiaHabil(): bool
+    + contarFestivosEnRango(): int
+  }
+}
+
+package "6. Suscripciones y Clientes" #f0f9ff {
+  class ZonaCobertura {
+    + id: int [PK]
+    + nombre: varchar [UNIQUE]
+    + poligono: GeoJSON
+    + estado: activo / inactivo
+    + contieneCoordenada(): bool
+  }
+
+  class Cliente {
+    + id: int [PK]
+    + nombre_completo: varchar
+    + documento: varchar [UNIQUE]
+    + telefono: varchar
+    + correo: varchar [UNIQUE]
+    + modalidad_entrega: fija / hibrida
+    + restricciones_alimentarias: varchar
+    + tiene_cocas_propias: bool
+    + password: varchar (hash app)
+    + estado: activo / inactivo
+    + registrarCliente()
+  }
+
+  class DireccionCliente {
+    + id: int [PK]
+    + cliente_id: int [FK]
+    + zona_cobertura_id: int [FK]
+    + dia_semana: Lun..Vie (híbrida)
+    + direccion: varchar
+    + latitud: decimal
+    + longitud: decimal
+    + estado: activo / inactivo
+    + validarEnZona(): bool
+  }
+
+  class Suscripcion {
+    + id: int [PK]
+    + cliente_id: int [FK]
+    + servicio_id: int [FK]
+    + tipo_menu: estandar / pollo / cerdo
+    + tipo_venta: nueva / renovacion / reingreso
+    + fecha_inicio: date
+    + fecha_vencimiento: date
+    + valor_plan: decimal
+    + recargo_menu_personalizado: decimal
+    + cobro_cocas: decimal ($70.000 COP)
+    + valor_total: decimal
+    + estado: pendiente / activa / cancelada / vencida
+    + liquidarSuscripcion()
+    + descontarFestivos()
+  }
+
+  class Pago {
+    + id: int [PK]
+    + suscripcion_id: int [FK]
+    + valor: decimal
+    + comprobante_url: varchar
+    + estado: pendiente / aprobado / rechazado
+    + fecha_pago: timestamp
+    + validado_por_usuario_id: int [FK]
+    + fecha_validacion: timestamp
+    + validarPagoManual()
+  }
+}
+
+package "7. Logística y Distribución" #f0fdf4 {
+  class Ruta {
+    + id: int [PK]
+    + zona_cobertura_id: int [FK]
+    + domiciliario_id: int [FK]
+    + fecha: date
+    + estado: activo / inactivo
+    + generarRutaDiaria()
+  }
+
+  class RutaCliente {
+    + id: int [PK]
+    + ruta_id: int [FK]
+    + suscripcion_id: int [FK]
+    + orden_entrega: int
+    + estado_entrega: pendiente / en_ruta / entregado / no_entregado
+    + hora_entrega: timestamp
+    + cocas_entregadas: int
+    + cocas_recogidas: int
+    + confirmarEntrega()
+    + balancearCocas()
+  }
+
+  class Geolocalizacion {
+    + id: int [PK]
+    + ruta_id: int [FK]
+    + domiciliario_id: int [FK]
+    + latitud: decimal
+    + longitud: decimal
+    + hora_ubicacion: timestamp
+    + registrarGPS()
+  }
+
+  class Incidencia {
+    + id: int [PK]
+    + tipo_reportante: cliente / domiciliario
+    + cliente_id: int [FK, opcional]
+    + domiciliario_id: int [FK, opcional]
+    + ruta_cliente_id: int [FK, opcional]
+    + tipo_incidencia: coca_defectuosa / ausencia / direccion
+    + descripcion: text
+    + foto_url: varchar
+    + estado: abierta / en_gestion / resuelta
+    + respuesta: text
+    + registrarNovedad()
+    + resolverNovedad()
+  }
+
+  class SuspensionEntrega {
+    + id: int [PK]
+    + suscripcion_id: int [FK]
+    + fecha_suspendida: date
+    + motivo: varchar
+    + fecha_solicitud: timestamp
+    + estado: aprobado / pendiente
+    + registrarAusencia()
+  }
+}
+
+' ============================================================================
+' RELACIONES ENTRE CLASES
+' ============================================================================
+Rol "1" *-- "0..N" RolPermiso
+Permiso "1" *-- "0..N" RolPermiso
+Usuario --> Rol : rol_id
+Acceso --> Usuario : usuario_id
+
+Insumo --> CategoriaInsumo : categoria_id
+Insumo "1" *-- "0..N" InsumoProveedor
+Proveedor "1" *-- "0..N" InsumoProveedor
+Compra --> Proveedor : proveedor_id
+Compra "1" *-- "1..N" CompraDetalle
+CompraDetalle --> Insumo : insumo_id
+
+Preparacion --> CategoriaPreparacion : categoria_id
+Menu "1" *-- "1..N" MenuPreparacion
+Preparacion "1" *-- "0..N" MenuPreparacion
+FichaTecnica --> Preparacion : preparacion_id
+FichaTecnica "1" *-- "1..N" FichaTecnicaDetalle
+FichaTecnicaDetalle --> Insumo : insumo_id
+OrdenProduccion --> Menu : menu_id
+OrdenProduccion --> Empleado : responsable
+OrdenProduccion "1" *-- "1..N" OrdenProduccionDetalle
+OrdenProduccionDetalle --> Preparacion : preparacion_id
+
+Servicio --> CategoriaServicio : categoria_id
+
+Cliente "1" *-- "1..5" DireccionCliente : direcciones
+DireccionCliente --> ZonaCobertura : zona_cobertura_id
+Cliente "1" *-- "0..N" Suscripcion : adquiere
+Suscripcion --> Servicio : servicio_id
+Suscripcion ..> Calendario : descuenta festivos
+Suscripcion "1" *-- "0..N" Pago : genera
+Suscripcion "1" *-- "0..N" SuspensionEntrega : suspende dia
+
+Ruta --> ZonaCobertura : sectoriza
+Ruta --> Empleado : domiciliario
+Ruta "1" *-- "1..N" RutaCliente : paradas
+RutaCliente --> Suscripcion : entrega a
+Ruta "1" *-- "0..N" Geolocalizacion : coordenadas
+RutaCliente "1" o-- "0..N" Incidencia : novedades
+
+@enduml

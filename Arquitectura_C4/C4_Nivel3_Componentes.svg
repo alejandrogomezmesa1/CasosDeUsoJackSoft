@@ -1,0 +1,123 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg">
+  
+    <defs>
+      <marker id="flecha" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569" />
+      </marker>
+      <marker id="flecha-azul" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1d4ed8" />
+      </marker>
+      <filter id="sombra-suave" x="-4%" y="-4%" width="108%" height="108%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.06"/>
+      </filter>
+    </defs>
+    
+  <rect width="100%" height="100%" fill="#f8fafc" />
+  
+    <!-- Encabezado Limpio -->
+    <rect x="50" y="30" width="1100" height="70" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+    <text x="75" y="58" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Nivel 3: Componentes del Servidor Backend</text>
+    <text x="75" y="80" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-size="13" fill="#64748b">JackSoft — Los módulos que procesan la operación diaria</text>
+    
+
+  <!-- APLICACIONES QUE LLAMAN (IZQUIERDA) -->
+  <g transform="translate(50, 310)" filter="url(#sombra-suave)">
+    <rect width="180" height="150" rx="8" fill="#0284c7" stroke="#0369a1" stroke-width="1.5" />
+    <text x="90" y="35" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Aplicaciones</text>
+    <text x="90" y="55" font-family="sans-serif" font-size="11" fill="#e0f2fe" text-anchor="middle">[Web y Móvil]</text>
+    <line x1="20" y1="70" x2="160" y2="70" stroke="#38bdf8" stroke-width="1" />
+    <text x="90" y="95" font-family="sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle">• Navegador Web</text>
+    <text x="90" y="120" font-family="sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle">• Celular Domiciliario</text>
+  </g>
+
+  <!-- LÍMITE: SERVIDOR BACKEND -->
+  <rect x="270" y="120" width="630" height="660" rx="12" fill="#ffffff" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="6,6" />
+  <text x="300" y="148" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e40af">Servidor Backend: Módulos del Sistema</text>
+
+  <!-- FILA 1 -->
+  <!-- Modulo 1: Seguridad y Usuarios -->
+  <g transform="translate(300, 170)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">1. Seguridad y Usuarios</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Inicio de sesión, contraseñas,</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">roles y permisos del personal.</text>
+  </g>
+
+  <!-- Modulo 2: Suscripciones y Ventas -->
+  <g transform="translate(600, 170)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">2. Clientes y Suscripciones</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Planes semanal, quincenal, mensual,</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">menú y descuento de días festivos.</text>
+  </g>
+
+  <!-- FILA 2 -->
+  <!-- Modulo 3: Pagos y Comprobantes -->
+  <g transform="translate(300, 285)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">3. Pagos y Comprobantes</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Revisión de comprobantes Nequi</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">y activación de suscripciones.</text>
+  </g>
+
+  <!-- Modulo 4: Control de Cocas -->
+  <g transform="translate(600, 285)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">4. Control de Cocas</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Cobro de garantía de $70.000 COP,</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">rotación de 2 kits y recipientes dañados.</text>
+  </g>
+
+  <!-- FILA 3 -->
+  <!-- Modulo 5: Cocina y Recetas -->
+  <g transform="translate(300, 400)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">5. Cocina y Producción</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Conteo diario de almuerzos,</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">fichas técnicas e ingredientes.</text>
+  </g>
+
+  <!-- Modulo 6: Logística y Rutas -->
+  <g transform="translate(600, 400)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">6. Logística y Rutas</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Zonas de entrega en Medellín,</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">asignación a repartidores e incidencias.</text>
+  </g>
+
+  <!-- FILA 4 -->
+  <!-- Modulo 7: Compras e Insumos -->
+  <g transform="translate(300, 515)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">7. Compras e Inventario</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Proveedores, compras de alimentos</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">y control de existencias mínimas.</text>
+  </g>
+
+  <!-- Modulo 8: Reportes y Métricas -->
+  <g transform="translate(600, 515)" filter="url(#sombra-suave)">
+    <rect width="270" height="95" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" />
+    <text x="135" y="28" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1e3a8a" text-anchor="middle">8. Reportes y Métricas</text>
+    <text x="135" y="48" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Ventas del mes, entregas a tiempo</text>
+    <text x="135" y="65" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">y estadísticas para la gerencia.</text>
+  </g>
+
+  <!-- CONEXIÓN CENTRAL A LA BASE DE DATOS (ABAJO) -->
+  <g transform="translate(300, 640)" filter="url(#sombra-suave)">
+    <rect width="570" height="55" rx="8" fill="#1e40af" />
+    <text x="285" y="34" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Capa de Acceso a Datos (Guarda y consulta de forma segura)</text>
+  </g>
+
+  <!-- BASE DE DATOS (DERECHA) -->
+  <g transform="translate(940, 360)" filter="url(#sombra-suave)">
+    <rect width="210" height="120" rx="10" fill="#0f766e" stroke="#115e59" stroke-width="2" />
+    <ellipse cx="105" cy="20" rx="85" ry="10" fill="#14b8a6" />
+    <text x="105" y="48" font-family="sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Base de Datos</text>
+    <text x="105" y="70" font-family="sans-serif" font-size="11" fill="#ccfbf1" text-anchor="middle">[Almacén Relacional]</text>
+    <text x="105" y="94" font-family="sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">33 tablas del negocio</text>
+  </g>
+
+  <!-- LÍNEAS DE ENTRADA Y SALIDA -->
+  <line x1="230" y1="385" x2="270" y2="385" stroke="#0284c7" stroke-width="2" marker-end="url(#flecha-azul)" />
+  <line x1="870" y1="665" x2="940" y2="440" stroke="#0f766e" stroke-width="2" marker-end="url(#flecha)" />
+</svg>

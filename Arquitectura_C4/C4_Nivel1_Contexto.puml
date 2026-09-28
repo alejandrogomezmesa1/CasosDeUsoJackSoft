@@ -1,0 +1,28 @@
+@startuml C4_Nivel1_Contexto
+skinparam roundcorner 8
+skinparam shadowing true
+skinparam defaultFontName sans-serif
+
+title Nivel 1: Contexto del Sistema — JackSoft
+
+rectangle "Cliente / Suscriptor\n[Acceso: Web o Celular]" as cliente #0c4a6e;text:white
+rectangle "Administrador\n[Acceso: Portal Web]" as admin #0c4a6e;text:white
+rectangle "Personal de Cocina\n[Acceso: Pantalla Web]" as cocina #0c4a6e;text:white
+rectangle "Domiciliario\n[Acceso: App Móvil]" as domi #0c4a6e;text:white
+
+rectangle "JackSoft\n[Sistema Principal - Plataforma Web y App Móvil]" as jacksoft #1d4ed8;text:white
+
+rectangle "Bancolombia / Nequi\n[Servicio Externo]" as bancos #475569;text:white
+rectangle "WhatsApp\n[Servicio Externo]" as ws #475569;text:white
+rectangle "Mapas y GPS\n[Servicio Externo]" as mapas #475569;text:white
+
+cliente --> jacksoft : Solicita almuerzos y paga (Web / Celular)
+admin --> jacksoft : Gestiona ventas y reportes (Web)
+cocina --> jacksoft : Consulta pedidos diarios (Web)
+domi --> jacksoft : Consulta ruta y cocas (App Móvil)
+
+jacksoft ..> bancos : Valida transferencias
+jacksoft ..> ws : Envía notificaciones
+jacksoft ..> mapas : Ubicación de rutas
+
+@enduml
